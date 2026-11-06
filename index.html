@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#075985">
+<title>Misión: recuperar una escuela segura</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><span class="brand-icon">🔐</span><span>ESCAPE ROOM <small>CIUDADANÍA Y CONVIVENCIA</small></span></div>
+  <div class="timer" id="timer" aria-live="polite"><span>⏳ TIEMPO</span><strong id="time">10:00</strong></div>
+</header>
+<main class="shell">
+  <section class="hero" id="intro">
+    <div class="eyebrow">MISIÓN INDIVIDUAL · 10 MINUTOS</div>
+    <h1>¡Recuperar una<br><span>escuela segura!</span></h1>
+    <p class="lead">Los derechos de los estudiantes están en peligro. Superá cinco desafíos, reuní las pistas y ayudá a recuperar una convivencia escolar basada en el respeto.</p>
+    <div class="info-grid"><div><b>5</b><small>DESAFÍOS</small></div><div><b>10:00</b><small>MINUTOS</small></div><div><b>1–10</b><small>PUNTAJE</small></div></div>
+    <div class="student-fields">
+      <label>Nombre<input id="firstName" autocomplete="given-name" placeholder="Tu nombre"></label>
+      <label>Apellido<input id="lastName" autocomplete="family-name" placeholder="Tu apellido"></label>
+    </div>
+    <p class="hint">El tiempo comienza cuando tocás “Comenzar misión”. Trabajás de manera individual.</p>
+    <button class="primary" id="startBtn">Comenzar misión <span>→</span></button>
+  </section>
+
+  <section id="game" class="hidden">
+    <div class="progress-wrap"><div class="progress-label"><span id="stageLabel">DESAFÍO 1 DE 5</span><span id="progressPct">0%</span></div><div class="progress"><div id="progressBar"></div></div></div>
+
+    <article class="challenge" data-stage="1">
+      <div class="stage-kicker">DESAFÍO 01 · IDENTIFICAR</div><h2>La escena del conflicto</h2>
+      <p class="instruction">Leé cada situación y elegí el derecho que se vulnera. Cada respuesta vale 1 punto.</p>
+      <div id="rightsQuestions" class="question-list"></div>
+      <div class="clue">🔑 PISTA: <b>DIGNIDAD</b></div>
+      <button class="primary next" data-next="2">Guardar y continuar →</button>
+    </article>
+
+    <article class="challenge hidden" data-stage="2">
+      <div class="stage-kicker">DESAFÍO 02 · ORDENAR</div><h2>El expediente desordenado</h2>
+      <p class="instruction">Ordená las acciones para responder de manera segura ante una pelea. Elegí el número de orden para cada acción.</p>
+      <div id="orderQuestions" class="order-list"></div>
+      <div class="clue">🔑 PISTA: <b>PROTECCIÓN</b></div>
+      <button class="primary next" data-next="3">Guardar y continuar →</button>
+    </article>
+
+    <article class="challenge hidden" data-stage="3">
+      <div class="stage-kicker">DESAFÍO 03 · UNIR CON FLECHAS</div><h2>Las leyes ocultas</h2>
+      <p class="instruction">Tocá primero una ley de la columna izquierda y después su descripción de la columna derecha. Se dibujará una línea para unirlas. Para cambiar una unión, volvé a tocar la ley.</p>
+      <div class="match-board" id="matchBoard">
+        <svg class="match-lines" id="matchLines" aria-hidden="true"></svg>
+        <div class="match-column"><h3>LEYES</h3><div id="lawQuestions" class="match-list"></div></div>
+        <div class="match-column"><h3>DESCRIPCIONES</h3><div id="lawDescriptions" class="match-list"></div></div>
+      </div>
+      <p class="match-status" id="matchStatus">Todavía no hiciste ninguna unión.</p>
+      <div class="clue">🔑 PISTA: <b>DERECHOS</b></div>
+      <button class="primary next" data-next="4">Guardar y continuar →</button>
+    </article>
+
+    <article class="challenge hidden" data-stage="4">
+      <div class="stage-kicker">DESAFÍO 04 · DESCIFRAR</div><h2>El mensaje secreto</h2>
+      <p class="instruction">Reordená las letras para descubrir cada concepto. Escribí la palabra completa.</p>
+      <div id="wordQuestions" class="word-list"></div>
+      <div class="clue">🔑 PISTA: <b>RESPETO</b></div>
+      <button class="primary next" data-next="5">Guardar y continuar →</button>
+    </article>
+
+    <article class="challenge hidden" data-stage="5">
+      <div class="stage-kicker">DESAFÍO 05 · CASO FINAL</div><h2>La escuela necesita tu decisión</h2>
+      <div class="case-box">Un docente maltrata a sus alumnos, coloca calificaciones injustas y no escucha sus reclamos. Además, algunos estudiantes se amenazan y organizan peleas a la salida. Las autoridades conocen los problemas, pero todavía no tomaron medidas.</div>
+      <p class="instruction">Respondé con tus palabras. Se valorará que tus propuestas sean claras y estén relacionadas con los derechos y la convivencia.</p>
+      <label class="long-answer">1. Escribí al menos tres derechos que se están vulnerando.<textarea id="caseRights" rows="3" placeholder="Por ejemplo: derecho a..."></textarea></label>
+      <label class="long-answer">2. Proponé tres medidas que debería tomar la escuela.<textarea id="caseMeasures" rows="3" placeholder="La institución debería..."></textarea></label>
+      <label class="long-answer">3. ¿Por qué es importante aprender en un ambiente seguro y respetuoso?<textarea id="caseWhy" rows="3" placeholder="Es importante porque..."></textarea></label>
+      <div class="clue">🔑 ÚLTIMA PISTA: <b>CONVIVENCIA</b></div>
+      <button class="primary" id="finishBtn">Finalizar misión y ver resultado →</button>
+    </article>
+  </section>
+
+  <section id="result" class="hidden result-screen">
+    <div class="result-icon">🏆</div><div class="eyebrow">MISIÓN FINALIZADA</div><h1 id="resultTitle">¡Misión cumplida!</h1>
+    <p id="resultMessage" class="lead"></p>
+    <div class="score-card"><small>TU PUNTAJE</small><div><strong id="score">0</strong><span>/10</span></div><p id="scoreDetail"></p></div>
+    <p class="send-note">Prepará un correo para tu profesora con tu nombre, apellido, puntaje y todas tus respuestas.</p>
+    <button class="whatsapp" id="sendBtn"> <span>✉</span> Enviar respuestas por correo</button>
+    <p class="tiny">Se abrirá tu aplicación de correo con el informe preparado para elisadiarte@huertosalta.edu.ar. Revisalo y tocá “Enviar”.</p>
+    <button class="secondary" id="restartBtn">Volver a jugar</button>
+  </section>
+
+  <section id="timeout" class="hidden result-screen timeout-screen">
+    <div class="result-icon">⏰</div><div class="eyebrow">TIEMPO AGOTADO</div><h1>¡Te quedaste sin tiempo!</h1>
+    <p class="lead">La misión se bloqueó al cumplirse los 10 minutos. Tus respuestas guardadas se conservaron.</p>
+    <div class="score-card"><small>PUNTAJE HASTA EL MOMENTO</small><div><strong id="timeoutScore">0</strong><span>/10</span></div><p id="timeoutDetail"></p></div>
+    <p class="send-note">Podés enviar al docente las respuestas que alcanzaste a completar y tu puntaje.</p>
+    <button class="whatsapp" id="sendTimeoutBtn">✉ Enviar respuestas por correo</button>
+    <p class="tiny">El juego permanece bloqueado. Se abrirá tu aplicación de correo con el informe preparado.</p>
+  </section>
+  <footer>💙 LOS DERECHOS NO SE NEGOCIAN: SE RESPETAN Y SE GARANTIZAN.</footer>
+</main>
+<div id="toast" class="toast" role="status"></div>
+<script src="script.js"></script>
+</body></html>

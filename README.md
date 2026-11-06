@@ -21,7 +21,3 @@ Juego web individual, responsive y en español.
 El puntaje automático corrige las preguntas cerradas y reconoce si las tres respuestas finales tienen una extensión mínima. Las respuestas abiertas requieren revisión docente para valorar su contenido. El puntaje es orientativo y se puede ajustar en `script.js`.
 
 El juego no envía mensajes automáticamente: abre el correo configurado o WhatsApp con el informe preparado. El estudiante debe revisar y tocar **Enviar** en cada aplicación. Para el correo, el dispositivo debe tener una aplicación/cuenta configurada. Los informes extensos pueden estar sujetos a límites del programa de correo, WhatsApp o navegador.
-
-
-## Actualización del caso final
-El último desafío presenta una situación ficticia de trato irrespetuoso, falta de escucha y evaluación que podría estar influida por cuestiones personales. Invita a identificar derechos y pensar vías seguras para pedir ayuda y solicitar criterios de evaluación claros, sin señalar ni insultar a personas.
